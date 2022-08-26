@@ -1,11 +1,7 @@
-import { Box, Image, Flex, Link, Text, Button } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, Image, Flex, Link } from '@chakra-ui/react';
 import logo from '../../images/logo.png';
 
 const PreviewForum = (forum) => {
-    const [firstClickedLink, setFirstClickedLink] = useState(false);
-    const [secondClickedLink, setSecondClickedLink] = useState(false);
-
     return (
         <Flex
             flexDirection={'column'}
@@ -21,19 +17,9 @@ const PreviewForum = (forum) => {
             borderRadius={'md'}
         >
             <Box>
-                <Image src={logo} w='20rem' maxW={'100%'} />
+                <Image src={logo} w='10rem' maxW={'100%'} />
             </Box>
             <Box>
-                <Text align='center' mb={3}>
-                    פורום שנבחר:{' '}
-                    <Link
-                        href={forum.href}
-                        target={'_blank'}
-                        fontWeight={'bold'}
-                    >
-                        {forum.name}
-                    </Link>
-                </Text>
                 <Flex
                     gap={3}
                     flexDirection={{ base: 'column', sm: 'row' }}

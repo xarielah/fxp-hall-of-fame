@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
+const PickUsers = ({ setUser, setThread, inc }) => {
     const [wasThereAUser, setWasThereAUser] = useState(false);
     const [wasThereAThread, setWasThereAThread] = useState(false);
     const {
@@ -25,17 +25,25 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
             thread: '',
             threadLink: '',
             threadUser: '',
+            threadUserName: '',
         },
     });
 
     const onsubmit = (data) => {
-        const { user, userLink, thread, threadLink, threadUser } = data;
+        const {
+            user,
+            userLink,
+            thread,
+            threadLink,
+            threadUser,
+            threadUserName,
+        } = data;
 
         if (wasThereAUser) {
             setUser([user, userLink]);
         }
         if (wasThereAThread) {
-            setThread([thread, threadLink, threadUser]);
+            setThread([thread, threadLink, threadUser, threadUserName]);
         }
         inc();
     };
@@ -139,6 +147,19 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                         {...field}
                                         isInvalid={errors.threadLink}
                                         placeholder='קישור לאשכול...'
+                                        bg={'#fafafa'}
+                                    />
+                                )}
+                            />
+                            <Controller
+                                control={control}
+                                name='threadUserName'
+                                rules={{ required: wasThereAThread }}
+                                render={({ field }) => (
+                                    <Input
+                                        {...field}
+                                        isInvalid={errors.threadUserName}
+                                        placeholder='שם המשתמש של פותח האשכול...'
                                         bg={'#fafafa'}
                                     />
                                 )}

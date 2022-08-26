@@ -9,7 +9,7 @@ const PmUsers = ({ weeklyUser, weeklyThread, setShowCodeStatus }) => {
     );
 
     const pmLink = 'https://www.fxp.co.il/private.php?do=newpm&u=';
-    const nosahim = 'https://www.fxp.co.il/showthread.php?t=21213781';
+    const nosahim = 'https://www.fxp.co.il/showthread.php?t=21293772';
 
     useEffect(() => {
         console.log(pmThread, pmUser, wording);
