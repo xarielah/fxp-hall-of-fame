@@ -93,11 +93,13 @@ export default function getBBCode(weeklyUser, weeklyThread) {
         weeklyThread.length
             ? `[SIZE=3][FONT=tahoma][IMG]https://images.weserv.nl/?url=i.imgur.com/ThPiUoI.png[/IMG][SIZE=5][URL="${weeklyThread[2]}"][U][B][COLOR=#daa520]${weeklyThread[3]}[/COLOR][/B][/U][/URL][/SIZE][IMG]https://images.weserv.nl/?url=i.imgur.com/ThPiUoI.png[/IMG]
     
-    [U][B][COLOR=#daa520]אשר פתח את האשכול[/COLOR][/B][/U]: [SIZE=4]"[URL="${weeklyThread[1]}"][B]${weeklyThread[0]}[/B][/URL]"[/SIZE]`
-            : `[SIZE=5][U][B][COLOR=#000000]לא נמצא אשכול[/COLOR][/B][/U][/SIZE]`
-    }      
+    [U][B][COLOR=#daa520]אשר פתח את האשכול[/COLOR][/B][/U]: [SIZE=4]"[URL="${weeklyThread[1]}"][B]${weeklyThread[0]}[/B][/URL]"[/SIZE]
+               
     [/FONT][/SIZE][FONT=almoni-dl][SIZE=3][FONT=tahoma]כל הכבוד על פתיחת האשכול המושקע שבהחלט היה משמעותי בקרב המשתמשים. [/FONT][/SIZE][/FONT][SIZE=3][FONT=tahoma]הנך זוכה בלא פחות מ- [B][COLOR=#43c6db]7 ימי ווינר[/COLOR][COLOR=#a4de40] ו- 15 נקודות FxP, [/COLOR][COLOR=#000000]יישר כוח![/COLOR][/B]
-    [/FONT][/SIZE][SIZE=3][FONT=tahoma]
+    [/FONT][/SIZE]`
+            : `[SIZE=5][U][B][COLOR=#000000]לא נמצא אשכול[/COLOR][/B][/U][/SIZE]`
+    }   
+    [SIZE=3][FONT=tahoma]
                 [B][COLOR=#008080]
     ${
         weeklyThread.length > 0 || weeklyThread.length > 0
