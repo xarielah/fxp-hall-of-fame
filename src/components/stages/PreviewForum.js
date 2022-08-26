@@ -37,7 +37,7 @@ const PreviewForum = ({ forum }) => {
                     </Link>{' '}
                     |{' '}
                     <Link
-                        href={forum.links.new}
+                        href={forum.links.newThread}
                         textDecoration={'underline'}
                         target={'_blank'}
                     >
