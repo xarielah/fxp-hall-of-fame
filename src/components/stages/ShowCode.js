@@ -49,9 +49,7 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                 <>
                     <Flex gap={2} flexDirection={{ base: 'row', md: 'column' }}>
                         <Button
-                            mb={3}
-                            size='sm'
-                            colorScheme={'messenger'}
+                            variant={copied ? 'copied-btn' : 'main-btn'}
                             onClick={() => {
                                 copyText();
                                 setCopied(true);
@@ -61,20 +59,21 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                             {copied ? 'הקוד הועתק! ✔️' : 'העתק נוסח ללוח'}
                         </Button>
                         <Button
-                            colorScheme={'whatsapp'}
-                            size={'sm'}
-                            onClick={swapReveal}
-                            mb={revealCode ? 2 : 0}
+                            variant={'main-btn'}
                             w='100%'
+                            onClick={swapReveal}
                         >
                             {revealCode ? 'הסתר קוד' : 'הצג קוד'}
                         </Button>
                     </Flex>
                     {revealCode && (
                         <Textarea
-                            rows={{ base: 8, md: 10 }}
+                            mt={3}
+                            // rows={{ base: 8, md: 25 }}
+                            rows={8}
                             value={fullText}
                             readOnly
+                            bg={'#fafafa55'}
                         />
                     )}
                     <Box align='center' mt={5}>

@@ -1,7 +1,7 @@
-import { Box, Image, Flex, Link } from '@chakra-ui/react';
-import logo from '../../images/logo.png';
+import { Box, Image, Button, Flex, Link } from '@chakra-ui/react';
 
-const PreviewForum = (forum) => {
+const PreviewForum = ({ forum }) => {
+    console.log(forum);
     return (
         <Flex
             flexDirection={'column'}
@@ -17,19 +17,32 @@ const PreviewForum = (forum) => {
             borderRadius={'md'}
         >
             <Box>
-                <Image src={logo} w='10rem' maxW={'100%'} />
+                <Link target={'_blank'} href={forum.links.forum}>
+                    <Image src={forum.logo} w='10rem' maxW={'100%'} />
+                </Link>
             </Box>
             <Box>
                 <Flex
                     gap={3}
                     flexDirection={{ base: 'column', sm: 'row' }}
                     align={'center'}
+                    px={4}
                 >
                     <Link
-                        _hover={{ textDecoration: 'none' }}
-                        href={forum.thread}
+                        href={forum.links.debate}
+                        textDecoration={'underline'}
                         target={'_blank'}
-                    ></Link>
+                    >
+                        קישור להגשת מועמדים
+                    </Link>{' '}
+                    |{' '}
+                    <Link
+                        href={forum.links.new}
+                        textDecoration={'underline'}
+                        target={'_blank'}
+                    >
+                        פתיחת אשכול בהיכל
+                    </Link>
                 </Flex>
             </Box>
         </Flex>

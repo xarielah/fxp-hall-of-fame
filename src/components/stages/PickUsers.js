@@ -186,8 +186,7 @@ const PickUsers = ({ setUser, setThread, inc }) => {
                         <Button
                             type='submit'
                             isDisabled={Object.keys(errors).length > 0}
-                            size='sm'
-                            colorScheme={'messenger'}
+                            variant={'main-btn'}
                         >
                             קבל קוד
                         </Button>
