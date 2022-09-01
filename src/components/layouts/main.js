@@ -21,15 +21,15 @@ const MainLayout = ({ children }) => {
         >
             <AnimationWrapper>
                 <Container
-                    maxW='container.md'
-                    w={{ base: '90%', md: '100%' }}
+                    maxW={{ base: '90%', md: '50ch' }}
+                    w={'100vw'}
                     mb={{ base: 0, md: 14 }}
                     py={10}
                     border={'1px solid #fafafa55'}
                     borderRadius={'md'}
                     bg={'#fafafa22'}
-                    backdropFilter={'blur(5px)'}
                     boxShadow={'0 0 30px #33333322'}
+                    backdropFilter={'blur(3px)'}
                 >
                     <PreviewForum forum={forum} />
                     <ContentAnimation>{children}</ContentAnimation>

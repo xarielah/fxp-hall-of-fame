@@ -1,4 +1,4 @@
-import { Box, Image, Button, Flex, Link } from '@chakra-ui/react';
+import { Box, Image, Flex, Link } from '@chakra-ui/react';
 
 const PreviewForum = ({ forum }) => {
     console.log(forum);
@@ -18,7 +18,7 @@ const PreviewForum = ({ forum }) => {
         >
             <Box>
                 <Link target={'_blank'} href={forum.links.forum}>
-                    <Image src={forum.logo} w='10rem' maxW={'100%'} />
+                    <Image src={forum.logo} w='15rem' maxW={'100%'} />
                 </Link>
             </Box>
             <Box>
@@ -34,8 +34,7 @@ const PreviewForum = ({ forum }) => {
                         target={'_blank'}
                     >
                         קישור להגשת מועמדים
-                    </Link>{' '}
-                    |{' '}
+                    </Link>
                     <Link
                         href={forum.links.newThread}
                         textDecoration={'underline'}

@@ -1,10 +1,11 @@
-import { Flex, Textarea, Button, Text, Box } from '@chakra-ui/react';
+import { Flex, Textarea, Link, Button, Text, Box } from '@chakra-ui/react';
 import Notes from '../general/Notes';
 import getBBCode from '../../data/getBBCode';
 import { useState } from 'react';
 import PmUsers from './PmUsers';
 
 const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
+    console.log(forum);
     const [isOpen, setOpen] = useState(true);
     const [copied, setCopied] = useState(false);
     const [showCodeStatus, setShowCodeStatus] = useState(
@@ -13,7 +14,13 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
     const [revealCode, setRevealCode] = useState(false);
 
     const fullText = getBBCode(weeklyUser, weeklyThread);
-    const copyText = () => navigator.clipboard.writeText(fullText);
+    // window.open(forum.links.newThread, '_blank');
+    const copyText = () => {
+        setCopied(true);
+        navigator.clipboard
+            .writeText(fullText)
+            .then(() => window.open(forum.links.newThread, '_blank'));
+    };
 
     const swapReveal = () => setRevealCode((prev) => !prev);
 
@@ -47,16 +54,15 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                 </Box>
             ) : (
                 <>
-                    <Flex gap={2} flexDirection={{ base: 'row', md: 'column' }}>
+                    <Flex gap={2} flexDirection={'column'}>
                         <Button
+                            onClick={copyText}
                             variant={copied ? 'copied-btn' : 'main-btn'}
-                            onClick={() => {
-                                copyText();
-                                setCopied(true);
-                            }}
                             w='100%'
                         >
-                            {copied ? 'הקוד הועתק! ✔️' : 'העתק נוסח ללוח'}
+                            {copied
+                                ? 'הקוד הועתק! ✔️'
+                                : 'העתק קוד ופתח אשכול חדש'}
                         </Button>
                         <Button
                             variant={'main-btn'}
