@@ -18,40 +18,40 @@ const colors = {
     fxpSup: '#0000ff',
 };
 
+const btn = {
+    color: '#fafafa',
+    bg: 'blackAlpha.700',
+    borderRadius: 'full',
+    _hover: {
+        bg: 'fxpBlue',
+        boxShadow: '0 0 10px #33333355',
+    },
+    _active: {
+        bg: 'fxpBlue',
+    },
+};
+
 const components = {
     Link: {
         baseStyle: {
             '&:hover': {
-                transition: '400ms ease-in-out all',
+                transition: '200ms ease-in-out all',
                 color: 'fxpBlue',
+            },
+        },
+    },
+    Text: {
+        variants: {
+            'header-option': {
+                fontWeight: 'bold',
+                color: '#fafafa',
             },
         },
     },
     Button: {
         variants: {
-            'main-btn': {
-                color: '#fafafa',
-                bg: '#333333',
-                _hover: {
-                    bg: 'fxpBlue',
-                    boxShadow: '0 0 10px #33333355',
-                },
-                _active: {
-                    bg: 'fxpBlue',
-                },
-            },
-            'copied-btn': {
-                color: 'fxpBlue',
-                bg: '#333333',
-                _hover: {
-                    bg: 'fxpBlue',
-                    color: 'white',
-                    boxShadow: '0 0 10px #33333355',
-                },
-                _active: {
-                    bg: 'fxpBlue',
-                },
-            },
+            'main-btn': btn,
+            'red-btn': { ...btn, bg: 'fxpRed' },
         },
         defaultProps: {
             size: 'sm',

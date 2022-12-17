@@ -1,4 +1,4 @@
-import { Flex, Textarea, Link, Button, Text, Box } from '@chakra-ui/react';
+import { Flex, Textarea, Button, Text, Box } from '@chakra-ui/react';
 import Notes from '../general/Notes';
 import getBBCode from '../../data/getBBCode';
 import { useState } from 'react';
@@ -14,7 +14,6 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
     const [revealCode, setRevealCode] = useState(false);
 
     const fullText = getBBCode(weeklyUser, weeklyThread);
-    // window.open(forum.links.newThread, '_blank');
     const copyText = () => {
         setCopied(true);
         navigator.clipboard
@@ -54,11 +53,15 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                 </Box>
             ) : (
                 <>
-                    <Flex gap={2} flexDirection={'column'}>
+                    <Flex
+                        gap={2}
+                        flexDirection={{ base: 'column', md: 'row' }}
+                        justifyContent={'center'}
+                    >
                         <Button
                             onClick={copyText}
-                            variant={copied ? 'copied-btn' : 'main-btn'}
-                            w='100%'
+                            variant={'main-btn'}
+                            w={{ base: '100%', md: 'max-content' }}
                         >
                             {copied
                                 ? 'הקוד הועתק! ✔️'
@@ -66,7 +69,7 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                         </Button>
                         <Button
                             variant={'main-btn'}
-                            w='100%'
+                            w={{ base: '100%', md: 'max-content' }}
                             onClick={swapReveal}
                         >
                             {revealCode ? 'הסתר קוד' : 'הצג קוד'}
@@ -84,8 +87,7 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                     )}
                     <Box align='center' mt={5}>
                         <Button
-                            colorScheme='red'
-                            size='sm'
+                            variant={'red-btn'}
                             onClick={() => (window.location.href = '/')}
                         >
                             אפס הכל
