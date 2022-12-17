@@ -8,7 +8,6 @@ import {
     ModalCloseButton,
     ModalFooter,
     ModalBody,
-    Text,
     useDisclosure,
 } from '@chakra-ui/react';
 import { useEffect } from 'react';
@@ -50,8 +49,7 @@ const PopupModal = ({
 
                     <ModalFooter>
                         <Button
-                            colorScheme='red'
-                            size='sm'
+                            variant={'red-btn'}
                             mr={3}
                             margin='0 auto'
                             onClick={onClose}

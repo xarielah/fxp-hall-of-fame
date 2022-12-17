@@ -1,13 +1,4 @@
-import {
-    Switch,
-    Input,
-    Text,
-    Container,
-    Wrap,
-    Divider,
-    Flex,
-    Button,
-} from '@chakra-ui/react';
+import { Switch, Input, Text, Wrap, Flex, Button, Box } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 const PickUsers = ({ setUser, setThread, inc }) => {
@@ -52,23 +43,36 @@ const PickUsers = ({ setUser, setThread, inc }) => {
     const userRegex = /^https:\/\/www\.fxp\.co\.il(\/(member\.php)?(\?.*)?)?$/;
 
     return (
-        <Container>
+        <>
             <form onSubmit={handleSubmit(onsubmit)}>
-                <Flex flexDirection='column' gap={6}>
-                    <Wrap justify='space-between'>
-                        <Text>האם היה משקיען השבוע?</Text>
+                <Flex
+                    justify={'center'}
+                    flexDirection={{ base: 'column', md: 'row' }}
+                    mb={5}
+                    minW={'100%'}
+                    justifyContent={'space-between'}
+                    gap={8}
+                >
+                    <Flex flexDirection='column' gap={6} flex={1}>
+                        <HeaderBox>
+                            <Wrap justify='space-between'>
+                                <Text variant={'header-option'}>
+                                    האם היה משקיען השבוע?
+                                </Text>
 
-                        <Switch
-                            onChange={(e) => {
-                                setWasThereAUser(e.target.checked);
-                                resetField('user');
-                                resetField('userLink');
-                            }}
-                            defaultValue={wasThereAUser}
-                        />
-                    </Wrap>
-                    {wasThereAUser && (
-                        <>
+                                <Switch
+                                    colorScheme={'twitter'}
+                                    size={'lg'}
+                                    onChange={(e) => {
+                                        setWasThereAUser(e.target.checked);
+                                        resetField('user');
+                                        resetField('userLink');
+                                    }}
+                                    defaultValue={wasThereAUser}
+                                />
+                            </Wrap>
+                        </HeaderBox>
+                        {wasThereAUser && (
                             <Wrap gap={4}>
                                 <Controller
                                     control={control}
@@ -100,100 +104,113 @@ const PickUsers = ({ setUser, setThread, inc }) => {
                                     )}
                                 />
                             </Wrap>
-                        </>
-                    )}
-                </Flex>
-                <Divider my={4} />
-                <Flex flexDirection='column' gap={6}>
-                    <Wrap justify='space-between'>
-                        <Text>האם היה אשכול השבוע?</Text>
-                        <Switch
-                            isInvalid={errors.thread}
-                            onChange={(e) => {
-                                setWasThereAThread(e.target.checked);
-                                resetField('thread');
-                                resetField('threadLink');
-                                resetField('threadUser');
-                            }}
-                        />
-                        {errors.hasThread && (
-                            <Text>יש בעיה בקישור לאשכול.</Text>
                         )}
-                    </Wrap>
-                    {wasThereAThread && (
-                        <Wrap gap={4}>
-                            <Controller
-                                control={control}
-                                name='thread'
-                                rules={{ required: wasThereAThread }}
-                                render={({ field }) => (
-                                    <Input
-                                        {...field}
-                                        isInvalid={errors.thread}
-                                        placeholder='שם האשכול...'
-                                        bg={'#fafafa'}
-                                    />
+                    </Flex>
+                    <Flex flexDirection='column' gap={6} flex={1}>
+                        <HeaderBox>
+                            <Wrap justify='space-between'>
+                                <Text variant={'header-option'}>
+                                    האם היה אשכול השבוע?
+                                </Text>
+                                <Switch
+                                    size={'lg'}
+                                    colorScheme={'twitter'}
+                                    isInvalid={errors.thread}
+                                    onChange={(e) => {
+                                        setWasThereAThread(e.target.checked);
+                                        resetField('thread');
+                                        resetField('threadLink');
+                                        resetField('threadUser');
+                                    }}
+                                />
+                                {errors.hasThread && (
+                                    <Text>יש בעיה בקישור לאשכול.</Text>
                                 )}
-                            />
-                            <Controller
-                                control={control}
-                                name='threadLink'
-                                rules={{
-                                    pattern: threadRegex,
-                                    required: wasThereAThread,
-                                }}
-                                render={({ field }) => (
-                                    <Input
-                                        {...field}
-                                        isInvalid={errors.threadLink}
-                                        placeholder='קישור לאשכול...'
-                                        bg={'#fafafa'}
-                                    />
-                                )}
-                            />
-                            <Controller
-                                control={control}
-                                name='threadUserName'
-                                rules={{ required: wasThereAThread }}
-                                render={({ field }) => (
-                                    <Input
-                                        {...field}
-                                        isInvalid={errors.threadUserName}
-                                        placeholder='שם המשתמש של פותח האשכול...'
-                                        bg={'#fafafa'}
-                                    />
-                                )}
-                            />
-                            <Controller
-                                control={control}
-                                name='threadUser'
-                                rules={{
-                                    pattern: userRegex,
-                                    required: wasThereAThread,
-                                }}
-                                render={({ field }) => (
-                                    <Input
-                                        {...field}
-                                        isInvalid={errors.threadUser}
-                                        placeholder='קישור למשתמש פותח האשכול...'
-                                        bg={'#fafafa'}
-                                    />
-                                )}
-                            />
-                        </Wrap>
-                    )}
-                    <Wrap justify='center'>
-                        <Button
-                            type='submit'
-                            isDisabled={Object.keys(errors).length > 0}
-                            variant={'main-btn'}
-                        >
-                            קבל קוד
-                        </Button>
-                    </Wrap>
+                            </Wrap>
+                        </HeaderBox>
+                        {wasThereAThread && (
+                            <Wrap gap={4}>
+                                <Controller
+                                    control={control}
+                                    name='thread'
+                                    rules={{ required: wasThereAThread }}
+                                    render={({ field }) => (
+                                        <Input
+                                            {...field}
+                                            isInvalid={errors.thread}
+                                            placeholder='שם האשכול...'
+                                            bg={'#fafafa'}
+                                        />
+                                    )}
+                                />
+                                <Controller
+                                    control={control}
+                                    name='threadLink'
+                                    rules={{
+                                        pattern: threadRegex,
+                                        required: wasThereAThread,
+                                    }}
+                                    render={({ field }) => (
+                                        <Input
+                                            {...field}
+                                            isInvalid={errors.threadLink}
+                                            placeholder='קישור לאשכול...'
+                                            bg={'#fafafa'}
+                                        />
+                                    )}
+                                />
+                                <Controller
+                                    control={control}
+                                    name='threadUserName'
+                                    rules={{ required: wasThereAThread }}
+                                    render={({ field }) => (
+                                        <Input
+                                            {...field}
+                                            isInvalid={errors.threadUserName}
+                                            placeholder='שם המשתמש של פותח האשכול...'
+                                            bg={'#fafafa'}
+                                        />
+                                    )}
+                                />
+                                <Controller
+                                    control={control}
+                                    name='threadUser'
+                                    rules={{
+                                        pattern: userRegex,
+                                        required: wasThereAThread,
+                                    }}
+                                    render={({ field }) => (
+                                        <Input
+                                            {...field}
+                                            isInvalid={errors.threadUser}
+                                            placeholder='קישור למשתמש פותח האשכול...'
+                                            bg={'#fafafa'}
+                                        />
+                                    )}
+                                />
+                            </Wrap>
+                        )}
+                    </Flex>
                 </Flex>
+                <Wrap justify='center'>
+                    <Button
+                        type='submit'
+                        isDisabled={Object.keys(errors).length > 0}
+                        variant={'main-btn'}
+                    >
+                        יצירת נוסח
+                    </Button>
+                </Wrap>
             </form>
-        </Container>
+        </>
+    );
+};
+
+const HeaderBox = ({ children }) => {
+    return (
+        <Box px={4} borderRadius={'full'} py={2} bg={'blackAlpha.700'}>
+            {children}
+        </Box>
     );
 };
 

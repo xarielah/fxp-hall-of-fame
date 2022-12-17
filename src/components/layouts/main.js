@@ -1,4 +1,4 @@
-import { Container, Flex, Link, Text } from '@chakra-ui/react';
+import { Container, Flex, Text, Link } from '@chakra-ui/react';
 import bg from '../../images/bg.jpg';
 import forum from '../../data/forum';
 import AnimationWrapper from './animation';
@@ -9,7 +9,7 @@ const MainLayout = ({ children }) => {
     return (
         <Flex
             flexDirection='column'
-            h='100vh'
+            minH='100vh'
             justify='center'
             align='center'
             as='main'
@@ -21,7 +21,7 @@ const MainLayout = ({ children }) => {
         >
             <AnimationWrapper>
                 <Container
-                    maxW={{ base: '90%', md: '50ch' }}
+                    maxW={{ base: '90%', md: '130ch' }}
                     w={'100vw'}
                     mb={{ base: 0, md: 14 }}
                     py={10}
@@ -29,7 +29,6 @@ const MainLayout = ({ children }) => {
                     borderRadius={'md'}
                     bg={'#fafafa22'}
                     boxShadow={'0 0 30px #33333322'}
-                    backdropFilter={'blur(3px)'}
                 >
                     <PreviewForum forum={forum} />
                     <ContentAnimation>{children}</ContentAnimation>

@@ -1,19 +1,17 @@
 import { Box, Image, Flex, Link } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const PreviewForum = ({ forum }) => {
-    console.log(forum);
     return (
         <Flex
             flexDirection={'column'}
             justify={'center'}
             align={'center'}
             mb={5}
-            bg={'#33333388'}
             color={'white'}
             py={3}
             px={1}
             margin={'0 auto 2em'}
-            boxShadow={'0 0 10px #33333377'}
             borderRadius={'md'}
         >
             <Box>
@@ -26,25 +24,31 @@ const PreviewForum = ({ forum }) => {
                     gap={3}
                     flexDirection={{ base: 'column', sm: 'row' }}
                     align={'center'}
+                    py={2}
                     px={4}
+                    borderRadius={'full'}
+                    bg={'blackAlpha.700'}
                 >
-                    <Link
-                        href={forum.links.debate}
-                        textDecoration={'underline'}
-                        target={'_blank'}
-                    >
-                        קישור להגשת מועמדים
-                    </Link>
-                    <Link
-                        href={forum.links.newThread}
-                        textDecoration={'underline'}
-                        target={'_blank'}
-                    >
-                        פתיחת אשכול בהיכל
-                    </Link>
+                    {forum.links.menu.map((item) => (
+                        <LinksMenuItem href={item.href} label={item.label} />
+                    ))}
                 </Flex>
             </Box>
         </Flex>
+    );
+};
+
+const LinksMenuItem = (props) => {
+    return (
+        <Link
+            mx={3}
+            href={props.href}
+            target={'_blank'}
+            display={'flex'}
+            alignItems={'center'}
+        >
+            {props.label} <ExternalLinkIcon ml={1} />
+        </Link>
     );
 };
 

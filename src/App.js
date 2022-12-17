@@ -1,4 +1,4 @@
-import { Container, Flex, Text, Progress } from '@chakra-ui/react';
+import { Container, Flex } from '@chakra-ui/react';
 import { useState } from 'react';
 import { PickUsers, ShowCode } from './components/stages';
 import forum from './data/forum';
@@ -15,17 +15,7 @@ function App() {
     const setThread = (str) => setWeeklyThread(str);
 
     return (
-        <Container>
-            <Text textAlign={'center'}>
-                {stage !== 1 ? `שלב ${stage + 1}/2` : 'בהצלחה ותודה רבה ♥'}
-            </Text>
-            <Progress
-                boxShadow={'0 0 5px #33333355'}
-                borderRadius={'full'}
-                value={(stage + 1) * 50}
-                size='xs'
-                colorScheme='messenger'
-            />
+        <Container maxW={'container.xl'}>
             <Flex flexDirection='column' gap={10} my={5}>
                 {stage === 0 && (
                     <PickUsers
